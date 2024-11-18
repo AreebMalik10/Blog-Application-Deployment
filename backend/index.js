@@ -103,15 +103,19 @@ app.post("/api/blogs", verifyToken, async (req, res) => {
 });
 
 
+
+
 // New API to fetch all blogs (for UserDashboard)
 app.get("/api/all-blogs", async (req, res) => {
   try {
-    const blogs = await Blog.find(); // Get all blogs
+    // Populate the 'createdBy' field with the admin's data (including email)
+    const blogs = await Blog.find().populate('createdBy', 'email'); // Populating the email field of the admin
     res.status(200).json(blogs); // Send blogs as response
   } catch (error) {
     res.status(500).json({ message: "Error fetching all blogs", error: error.message });
   }
 });
+
 
 
 app.get("/api/blogs", verifyToken, async (req, res) => {

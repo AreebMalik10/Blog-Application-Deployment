@@ -11,6 +11,9 @@ function App() {
   return (
     <Router>
       <Routes>
+
+      <Route path="/" element={<UserDashboard />} />
+      <Route path="/blogdetails" element={<BlogDetails />} /> {/* BlogDetails route */}
         <Route path="/admin" element={<Admin/>} /> {/* Login Page */}
         <Route path="/adminDashboard" 
         element=
@@ -21,8 +24,7 @@ function App() {
           
           </PrivateRoute>
         } /> {/* Admin Dashboard */}
-        <Route path="/" element={<UserDashboard />} />
-        <Route path="/blogs/:id" element={<BlogDetails />} /> {/* BlogDetails route */}
+        
       </Routes>
     </Router>
   );
