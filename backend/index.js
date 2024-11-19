@@ -3,8 +3,12 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
+
+
+const _dirname = path.resolve();
 
 // Middleware
 app.use(express.json());
@@ -195,6 +199,11 @@ app.delete("/api/blogs/:id", verifyToken, async (req, res) => {
 });
 
 
+app.use(express.static(path.join(_dirname, "/frontend/build")))
+
+app.get('*', (_, res) =>{
+  res.sendFile(path.resolve(_dirname, "frontend", "build", "index.html"));
+})
 
 
 // Start Server
