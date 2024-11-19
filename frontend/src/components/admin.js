@@ -15,7 +15,7 @@ export default function Admin() {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post("https://blog-application-39aq.onrender.com/login", {
         email,
         password,
       });

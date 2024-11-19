@@ -13,7 +13,7 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/all-blogs");
+        const response = await axios.get("https://blog-application-39aq.onrender.com/api/all-blogs");
         setBlogs(response.data);
         setLoading(false);
       } catch (error) {
